@@ -27,7 +27,7 @@ class DeliveriesController < ApplicationController
 
     if the_delivery.valid?
       the_delivery.save
-      redirect_to("/deliveries", { :notice => "Delivery created successfully." })
+      redirect_to("/deliveries", { :notice => "Added to list" })
     else
       redirect_to("/deliveries", { :alert => the_delivery.errors.full_messages.to_sentence })
     end
@@ -37,10 +37,7 @@ class DeliveriesController < ApplicationController
     the_id = params.fetch("path_id")
     the_delivery = Delivery.where({ :id => the_id }).at(0)
     
-    the_delivery.description = params.fetch("query_description")
-    the_delivery.details = params.fetch("query_details")
-    the_delivery.delivery_date = params.fetch("query_delivery_date")
-    the_delivery.status = params.fetch("query_status", false)
+    the_delivery.status = true
 
     if the_delivery.valid?
       the_delivery.save

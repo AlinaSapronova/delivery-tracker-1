@@ -56,7 +56,9 @@
       <li>
         <div><%= a_delivery.description %></div>
 
-        <div style="color: red"><%= a_delivery.details %></div>
+        <div style="color: red">Supposed to arrive on <%= a_delivery.delivery_date %></div>
+        <div><%= a_delivery.details %></div>
+
 
         <div>
           
@@ -78,6 +80,7 @@
 
 <h2>Received</h2>
 
+<div class="received">
 <ul>
 <% @list_of_deliveries.where(:status => true).where(:user_id => current_user.id).each do |a_delivery| %>
       <li>
@@ -94,6 +97,7 @@
      <%end%>
   </ul>
 
+</div>
 
 
         
